@@ -83,8 +83,9 @@ const Smurf = () => {
                         </div>)
                     })}
             </div>
-            <div>
+            <div><b>
                 Total Population: {population()}
+                </b>
             </div>
         </div>
     )
