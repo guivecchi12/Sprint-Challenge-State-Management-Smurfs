@@ -3,19 +3,20 @@ import {SmurfContext} from '../context/SmurfContext';
 import axios from 'axios';
 
 const Smurf = () => {
-    const {smurf, addSmurfs} = useContext(SmurfContext);
+    const {smurf, addSmurfs, population} = useContext(SmurfContext);
     // console.log("Props in Smurf: ", smurf);
 
     const [ form, setForm ] = useState({
         name: '',
         age: '',
-        height: ''
+        height: '',
+        id: ''
     })
 
     const inputInfo = e => {
         e.persist();
         
-        setForm({...form, [e.target.name]:e.target.value});
+        setForm({...form, [e.target.name]:e.target.value, id: Date.now() });
     };
 
     const formSubmit = (e) => {
@@ -72,16 +73,18 @@ const Smurf = () => {
             </div>
             <div>
                 Your Smurfs:
-                <ul>
                     {smurf.map(murf=>{
                         return (
                         <div><b>Name: {murf.name}</b>
                             <li>Age: {murf.age} </li>
                             <li>Height: {murf.height} </li>
+                            <li>ID: {murf.id}</li>
                             <br />
                         </div>)
                     })}
-                </ul>
+            </div>
+            <div>
+                Total Population: {population()}
             </div>
         </div>
     )

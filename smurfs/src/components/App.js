@@ -25,11 +25,17 @@ const App = () => {
     addSmurf(oldArray => [...oldArray, smurf]);
   };
 
+  const population = () =>{
+    let pop = 0;
+    smurf.forEach(s => pop += 1);
+    return pop;
+  }
+
   // console.log("Smurf in App: ",smurf)
 
   return (
     <div className="App">
-      <SmurfContext.Provider value = {{smurf, addSmurfs}}>
+      <SmurfContext.Provider value = {{smurf, addSmurfs, population}}>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <Smurf />
       </SmurfContext.Provider>   
